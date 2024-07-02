@@ -20,4 +20,16 @@ class WebsiteController extends Controller
     {
         return view("website.contact");
     }
+    public function faq()
+    {
+        return view("website.faq");
+    }
+    public function privacy_policy()
+    {
+        return view("website.privacy-policy");
+    }
+    public function terms_and_condtitions()
+    {
+        return view("website.terms-and-condtitions");
+    }
 }

@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('',[\App\Http\Controllers\WebsiteController::class,"home"]);
 Route::get('/about',[\App\Http\Controllers\WebsiteController::class,"about"]);
 Route::get('/contact',[\App\Http\Controllers\WebsiteController::class,"contact"]);
+Route::get('/faq',[\App\Http\Controllers\WebsiteController::class,"faq"]);
+Route::get('/privacy-policy',[\App\Http\Controllers\WebsiteController::class,"privacy_policy"]);
+Route::get('/terms-and-condtitions',[\App\Http\Controllers\WebsiteController::class,"terms_and_condtitions"]);
 
 
 Route::any("test", function()
@@ -38,10 +42,21 @@ Route::get('/linkstorage', function () {
 
 
 Auth::routes();
+Route::get('/deposit_receipt/{image}', function ($image) {
+    $basePath = public_path() . '/uploads/deposit_receipts';
 
+    if (File::exists($basePath .'/' . $image)) {
+        return response()->file($basePath .'/'. $image);
+    } else {
+        return response('Not found', 404);
+    }
+});
+
+Route::post('/registerPost', [App\Http\Controllers\Auth\RegisterController::class,'create'])->name('registerPost');
 Route::middleware('auth')->group(
 function()
 {
+
     Route::group(['prefix'=>'user'], function(){
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'change_password_page']);
@@ -71,6 +86,7 @@ function()
 
         // transaction history routes
         Route::get('transaction/history',[\App\Http\Controllers\TransactionController::class,"transaction_history"]);
+        Route::get('referrals',[\App\Http\Controllers\ReferralController::class, "referrals"]);
 
 
         // profile routes

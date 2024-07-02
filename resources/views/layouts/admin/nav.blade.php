@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-xl p-0 align-items-center">
-    <a class="site-logo site-title" href="{{url('admin/dashboard')}}">{{env("APP_NAME")}}</a>
+    <a class="site-logo site-title" href="{{url('admin/dashboard')}}"><img
+        style="width: 4rem;"
+src={{asset("assets/images/logoIcon/logo_cropped.png")}}
+alt="site-logo"></a>
     <ul class="account-menu responsive-account-menu ms-3">
         <li class="icon"><a href=""><i
                     class="las la-user"></i></a></li>

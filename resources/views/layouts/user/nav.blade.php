@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-xl p-0 align-items-center">
     <a class="site-logo site-title" href="{{route('home')}}">
         <img
-src={{asset("assets/images/logoIcon/logo_bit_gold.png")}}
+        style="width: 4rem;"
+src={{asset("assets/images/logoIcon/logo_cropped.png")}}
 alt="site-logo">
         {{-- {{ env('APP_NAME') }} --}}
     </a>
@@ -22,6 +23,7 @@ alt="site-logo">
                 <ul class="sub-menu">
                     <li><a href="{{url('user/deposit')}}">Deposit</a></li>
                     <li><a href="{{url('user/investment/history')}}">Investment History</a></li>
+                    <li><a href="{{url('user/referrals')}}">Referrals</a></li>
                     <li><a href="{{url('user/withdraw')}}">Withdraw</a>
                     </li>
                   
@@ -30,14 +32,17 @@ alt="site-logo">
                     </li>
                 </ul>
             </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           
             <li class="menu_has_children"><a href="#0">Account</a>
                 <ul class="sub-menu">
                     {{-- <li><a href="{{url('user/profile-setting')}}">Profile
                             Setting</a></li> --}}
-                    <li><a href="{{url('user/change-password')}}">Change
-                            Password</a></li>
-                    <li><a href="{{url('logout')}}"> Logout</a></li>
+                    {{-- <li><a href="{{url('user/change-password')}}">Change --}}
+                            {{-- Password</a></li> --}}
+                    <li><a href="{{url('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a></li>
                 </ul>
             </li>
         </ul>

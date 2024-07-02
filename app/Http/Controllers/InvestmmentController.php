@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
+use function PHPUnit\Framework\isEmpty;
+
 class InvestmmentController extends Controller
 {
     public function show_investment()
@@ -25,22 +27,24 @@ class InvestmmentController extends Controller
 
         $plan_id = $request->input('plan_id');
         $amount = $request->input('amount');
-
         $wallet_model = new Wallet();
         $balance = $wallet_model->select('balance')->where('user_id',Auth::user()->id)->first();
         $plan = Config::get("investment_plan.".$plan_id);
-
+        
         if($amount < $plan['minimum'])
         {
             return redirect()-> back()->with('error',"Amount can not be less than $".$plan['minimum']);
         }
         if($plan['maximum'] != 'unlimited' && $amount > $plan['maximum'])
-        {
+        // dd($plan['maximum']);
+    {
+        dd($plan['maximum']);
+            dd($amount);
             return redirect()-> back()->with('error',"Choose a different investment plan if you want to invest higher amounts.");
         }
         if($amount > $balance->balance)
         {
-            return redirect()->to('user/deposit?payment_type=Bitcoin&amount='.$amount);
+            return redirect()->to('user/deposit?payment_type=Bitcoin&amount='.($amount - $balance->balance));
         }
         $investment_amount = $amount;
         $investment_returns = $plan['profit'];
@@ -53,6 +57,8 @@ class InvestmmentController extends Controller
 
     public function start_investment(Request $request)
     {
+        $investment_instance = Investment::where('user_id',Auth::user()->id)->first();
+     
         $investment_model = new Investment();
         $investment_data = session()->get("investment_data");
         $maturity_date = time() + 86400 * $investment_data['plan']['duration'];
@@ -65,8 +71,22 @@ class InvestmmentController extends Controller
         $investment_model->next_top_up = time() + env("TOP_UP_TIMER");
         $investment_model->user_id = Auth::user()->id;
         $investment_model->save();
+
         
         Wallet::debit_account($investment_data['amount'],Auth::user()->id);
+        if($investment_instance == ''){
+            $percentage = Config::get("referral_bonus.percentage_first");
+            $user = User::where('id',Auth::user()->id)->first();
+            $referrer = User::where('ref_code', $user->referrer_code)->first();
+            $bonus = $investment_data['amount'] * ($percentage / 100);
+            Wallet::credit_account($bonus,$referrer->id);
+        } else{
+            $percentage = Config::get("referral_bonus.percentage_others");
+            $user = User::where('id',Auth::user()->id)->first();
+            $referrer = User::where('ref_code', $user->referrer_code)->first();
+            $bonus = $investment_data['amount'] * ($percentage / 100);
+            Wallet::credit_account($bonus,$referrer->id);
+        }
         return redirect("user/investment/history");
 
     }

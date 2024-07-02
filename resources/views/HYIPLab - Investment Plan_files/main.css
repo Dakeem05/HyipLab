@@ -2450,7 +2450,7 @@ input[type="email"]:disabled {
 }
 
 .header.menu-fixed .header__bottom {
-	background-color: var(--second_color);
+	/* background-color: var(--second_color); */
 }
 
 .header__bottom {

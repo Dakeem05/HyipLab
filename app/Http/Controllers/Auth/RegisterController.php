@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Referral;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class RegisterController extends Controller
 {
@@ -50,10 +54,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255','unique:users'],
+            'name' => ['required', 'string', 'max:255'],
+            // 'phone' => ['required', 'digits:10', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
             'agree'=>['accepted'],
+            'ref_code' => ['sometimes', 'string', 'max:8'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -65,18 +71,36 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
+        // $validation = Validator::make($request->all(), validator());
+        $validation = $this->validator($request->all());
+        if($validation->fails()){
+            // dd($validation);
+            return back()->withErrors($validation)->withInput();
+        }
         $user =  User::create([
-            'name' => $data['name'],
-            'country' => $data['country'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request->name,
+            'country' => $request->country,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            // 'ref_code' => ,
+            // 'referrer_code' => isset($request->ref_code)? $request->ref_code : null,
         ]);
-
+       
+        // dd($user);
+        $user->ref_code = Str::random(8);
+        $user->referrer_code = isset($request->ref_code)? $request->ref_code : null;
+        $user->save();
+        
         User::create_wallet($user->id);
+        // User::create_referral($user->id);
 
-        return $user;
+        if (isset($request->ref_code)) {
+            
+        }
+        return redirect()->route('home');
+        // return $user;
     }
 }

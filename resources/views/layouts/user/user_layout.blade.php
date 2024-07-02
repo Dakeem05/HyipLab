@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> HYIPLab - Home</title>
+    <title> Addupcoin - Home</title>
     <meta name="title" Content="{{env('APP_NAME')}} - Home">
 
     <meta name="description" content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit">
@@ -16,9 +16,9 @@
     <link rel="apple-touch-icon" href="{{URL::asset('assets/images/logoIcon/logo.png')}}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="HYIPLab - Home">
+    <meta name="apple-mobile-web-app-title" content="Addupcoin - Home">
     
-    <meta itemprop="name" content="HYIPLab - Home">
+    <meta itemprop="name" content="Addupcoin - Home">
     <meta itemprop="description" content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit">
     <meta itemprop="image" content="{{URL::asset('assets/images/seo/633eef9a9b3161665068954.jpg')}}">
     

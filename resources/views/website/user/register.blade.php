@@ -689,10 +689,18 @@
                                                     </div>
                                                     @if (session()->has('error'))
                                                         <small
-                                                            class="text-danger mobileExist">{{ session()->get('error') }}</small>
+                                                            class="text-danger mobileExist">{{ session()->get <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="form-label">Referral Code (optional)</label>
+                                                    <input type="ref_code" class="form-control form--control checkUser"
+                                                        name="ref_code" value="" required>
+                                                </div>
+                                            </div>('error') }}</small>
                                                     @endif
                                                 </div>
                                             </div>
+
+                                           
 
                                             <div class="col-md-6">
                                                 <div class="form-group">

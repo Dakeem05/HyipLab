@@ -6,8 +6,8 @@
                     {{-- <a href="""" class="site-logo"><img
                             src="assets/images/logoIcon/logo_bit_gold.png" alt="image"></a> --}}
                     <ul class="footer-short-menu d-flex flex-wrap justify-content-center mt-3">
-                        <li><a href="policy/privacy-policy/260.html">Privacy Policy</a></li>
-                        <li><a href="policy/terms-and-service/261.html">Terms and Service</a></li>
+                        <li><a href="{{url('privacy-policy')}}">Privacy Policy</a></li>
+                        <li><a href="{{url('terms-and-condtitions')}}">Terms and Service</a></li>
                     </ul>
                 </div>
             </div>

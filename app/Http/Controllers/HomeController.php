@@ -15,14 +15,17 @@ class HomeController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
+        // dd($user_id);
         $wallet_model = new Wallet();
         $get_wallet = $wallet_model->select("balance")->where('user_id',$user_id)->first();
 
         $transaction_mdoel = new Transaction();
 
         $fetch_tranaction = $transaction_mdoel->where('user_id',$user_id)->orderBy("created_at",'desc')->limit(7)->get();
-        $withdraws_fetch = $transaction_mdoel->where('type',"withdraw")->where('status',1)->get();
+        $withdraws_fetch = $transaction_mdoel->where('user_id',$user_id)->where('type',"withdraw")->where('status',1)->get();
         $withdraws_total = 0;
+        $user_instance = user::where('id', $user_id)->first();
+        $ref_code = $user_instance->ref_code;
         if(!empty($withdraws_fetch))
         {
             foreach ($withdraws_fetch as $key => $value) {
@@ -39,7 +42,7 @@ class HomeController extends Controller
             "wallet_balance"=>number_format($get_wallet['balance'],2) ,
         ];
         view()->share('user_data', $user_data);
-        return view("user.dashboard",compact("fetch_tranaction","withdraws"));
+        return view("user.dashboard",compact("fetch_tranaction","withdraws", "ref_code"));
     }
 
 

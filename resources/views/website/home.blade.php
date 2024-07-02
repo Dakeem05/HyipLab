@@ -85,7 +85,7 @@
                                         towards increasing your profit margin by profitable investment. We look forward to
                                         you being part of our community.
                                     </p>
-                                    <a href="about.html" class="btn--base mt-4">More Info</a>
+                                    {{-- <a href="about.html" class="btn--base mt-4">More Info</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                         $100.00 -
                                         $999.00
                                     </div>
-                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#investModal"
+                                    <a href="{{url('register')}}" data-bs-toggle="modal" data-bs-target="#investModal"
                                         data-plan="{&quot;id&quot;:7,&quot;name&quot;:&quot;Platinum&quot;,&quot;minimum&quot;:&quot;100.00000000&quot;,&quot;maximum&quot;:&quot;5000.00000000&quot;,&quot;fixed_amount&quot;:&quot;0.00000000&quot;,&quot;interest&quot;:&quot;6.00000000&quot;,&quot;interest_type&quot;:0,&quot;time&quot;:&quot;24&quot;,&quot;time_name&quot;:&quot;Day&quot;,&quot;status&quot;:1,&quot;featured&quot;:0,&quot;capital_back&quot;:1,&quot;lifetime&quot;:0,&quot;repeat_time&quot;:&quot;7&quot;,&quot;created_at&quot;:&quot;2022-09-20T06:39:52.000000Z&quot;,&quot;updated_at&quot;:&quot;2022-09-20T06:39:52.000000Z&quot;}"
                                         class="btn--base btn-md mt-4 investModal">Invest Now</a>
                                 </div><!-- package-card end -->
@@ -157,7 +157,7 @@
                                     <div class="package-card__range mt-5 base--color">
                                         $1000.00 - $19999.00
                                     </div>
-                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#investModal"
+                                    <a href="{{url('register')}}" data-bs-toggle="modal" data-bs-target="#investModal"
                                         data-plan="{&quot;id&quot;:8,&quot;name&quot;:&quot;Gold&quot;,&quot;minimum&quot;:&quot;0.00000000&quot;,&quot;maximum&quot;:&quot;0.00000000&quot;,&quot;fixed_amount&quot;:&quot;200.00000000&quot;,&quot;interest&quot;:&quot;2.00000000&quot;,&quot;interest_type&quot;:0,&quot;time&quot;:&quot;168&quot;,&quot;time_name&quot;:&quot;Week&quot;,&quot;status&quot;:1,&quot;featured&quot;:0,&quot;capital_back&quot;:1,&quot;lifetime&quot;:0,&quot;repeat_time&quot;:&quot;5&quot;,&quot;created_at&quot;:&quot;2022-09-20T06:40:37.000000Z&quot;,&quot;updated_at&quot;:&quot;2022-09-20T06:40:37.000000Z&quot;}"
                                         class="btn--base btn-md mt-4 investModal">Invest Now</a>
                                 </div><!-- package-card end -->
@@ -185,7 +185,7 @@
                                         $20,000.00 -
                                         Unlimited
                                     </div>
-                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#investModal"
+                                    <a href="{{url('register')}}" data-bs-toggle="modal" data-bs-target="#investModal"
                                         data-plan="{&quot;id&quot;:9,&quot;name&quot;:&quot;Life Time&quot;,&quot;minimum&quot;:&quot;100.00000000&quot;,&quot;maximum&quot;:&quot;500.00000000&quot;,&quot;fixed_amount&quot;:&quot;0.00000000&quot;,&quot;interest&quot;:&quot;0.20000000&quot;,&quot;interest_type&quot;:1,&quot;time&quot;:&quot;24&quot;,&quot;time_name&quot;:&quot;Day&quot;,&quot;status&quot;:1,&quot;featured&quot;:0,&quot;capital_back&quot;:0,&quot;lifetime&quot;:1,&quot;repeat_time&quot;:&quot;0&quot;,&quot;created_at&quot;:&quot;2022-09-20T06:41:45.000000Z&quot;,&quot;updated_at&quot;:&quot;2022-09-20T06:41:45.000000Z&quot;}"
                                         class="btn--base btn-md mt-4 investModal">Invest Now</a>
                                 </div><!-- package-card end -->
@@ -461,68 +461,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="pt-120 pb-120">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6 text-center">
-                                <div class="section-header">
-                                    <h2 class="section-title"><span class="font-weight-normal">Frequently Asked</span> <b
-                                            class="base--color">Questions</b></h2>
-                                    <p>We answer some of your Frequently Asked Questions regarding our platform. If you have
-                                        a query that is not answered here, Please contact us.</p>
-                                </div>
-                            </div>
-                        </div><!-- row end -->
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="accordion cmn-accordion" id="accordionExample">
-                                    <div class="card">
-                                        <div class="card-header" id="heading0">
-                                            <h2 class="mb-0">
-                                                <button class="btn w-100 text-start collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapse0"
-                                                    aria-expanded="false" aria-controls="collapse0">
-                                                    <i class="las la-question-circle"></i>
-                                                    <span>What is ADD UP COIN</span>
-                                                </button>
-                                            </h2>
-                                        </div>
-
-                                        <div id="collapse0" class="collapse" aria-labelledby="heading0"
-                                            data-bs-parent="#accordionExample">
-                                            <div class="card-body">
-                                                Addupcoin is a registered digital asset investment firm based in the UK. The platform,
-                                                 which includes advanced basic and technical analysis at the source of high return performance, offers high & fixed interest return. Aiming for success with its international investor network, experienced team, privileged information from business and technology world; Addupcoin.com stands out from its competitors with its proven quality and ease of use. The company, which is managed under the leadership of people who think and foresee the future, 
-                                                is committed to achieving high returns from well-diversified portfolios and prioritizing clients
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="heading1">
-                                            <h2 class="mb-0">
-                                                <button class="btn w-100 text-start collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapse1"
-                                                    aria-expanded="false" aria-controls="collapse1">
-                                                    <i class="las la-question-circle"></i>
-                                                    <span>Guranteed Interest, but how?</span>
-                                                </button>
-                                            </h2>
-                                        </div>
-
-                                        <div id="collapse1" class="collapse" aria-labelledby="heading1"
-                                            data-bs-parent="#accordionExample">
-                                            <div class="card-body">Digital assets are a class of assets considered dangerous and inconvenient. Many reasons such as liquidity, money laundering accusation, uncertainty of regulation, access restriction, volatile markets, functionality inquiries reduce trust in these assets. We believe that the risk factor should be 
-                                                eliminated for all people who believe that finance will rise on distributed systems. That's why we offer high interest returns to platform investors. With careful and detailed examination of market conditions, daily trading volume, expectations; we change our portfolio distribution and adjust our investment strategy. With this active fund management, you enjoy the fixed interest rate return on the user side.</div>
-                                        </div>
-                                    </div>
-                                   
-                                   
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                
                 <!-- testimonial section start -->
                 {{-- <section class="pt-120 pb-120 bg_img overlay--radial"
                     data-background="assets/images/frontend/testimonial/631d7ddd2fe6c1662877149.jpg">
@@ -1335,3 +1274,18 @@
         </div>
        
     @endsection
+
+@section('extra-js-script')
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'fc8c4beefba2468bc219a1e43d4dc19ff909912d';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+@endsection
+

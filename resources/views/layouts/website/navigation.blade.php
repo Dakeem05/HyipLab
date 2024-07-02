@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-xl p-0 align-items-center">
     <a class="site-logo site-title" href="{{url(env("APP_URL_HOME"))}}">
         <img
-src={{asset("assets/images/logoIcon/logo_bit_gold.png")}}
+        style="width: 4rem;"
+src={{asset("assets/images/logoIcon/logo_cropped.png")}}
 alt="site-logo">
         {{-- {{ env('APP_NAME') }} --}}
     </a>
@@ -19,6 +20,7 @@ alt="site-logo">
             <li><a href="{{url('about')}}">About</a></li>
             {{-- <li><a href="plan.html">Plan</a></li> --}}
             {{-- <li><a href="blogs.html">Blog</a></li> --}}
+            <li><a href="{{url('faq')}}">Faq</a></li>
             <li><a href="{{url('contact')}}">Contact</a></li>
         </ul>
         <div class="nav-right">

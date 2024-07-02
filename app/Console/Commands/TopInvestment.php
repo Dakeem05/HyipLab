@@ -44,21 +44,23 @@ class TopInvestment extends Command
         $investment_model = new Investment();
         $current_time = time();
         $all_investment = $investment_model->where("status","0")->get();
-
+        // $this->info('Updated');
         foreach ($all_investment as $key => $value) {
             $timer = ($value['next_top_up'] - $current_time) / 3600;
+            $this->info($timer);
             $maturity_date = $value['maturity_date'];
             if(Carbon::now()->toDateString() == $maturity_date )
             {
                 // end investment
                 $this->update_investment_status($value['id']);
-               
+               $this->info('Updated if');
             }else{
-
+                
                 if($timer < 2)
                 {
                     $this->top_account($value['user_id'],$value['plan']);
                     $this->update_investment_timer($value['id']);
+                    $this->info('Updated else');
                 }
             }
         }

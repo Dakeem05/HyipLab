@@ -16,6 +16,7 @@ class TransactionController extends Controller
     public function deposit()
     {
         $gateways = Config::get("payment_gateway.gateways");
+        $amount_payable = 0;
         if(!isset($_GET['payment_type']) && !isset($_GET['amount'])){
             $gateway = "Bitcoin";
             $amount = 0.00;
@@ -23,18 +24,23 @@ class TransactionController extends Controller
         }else{
             $gateway  =$_GET['payment_type'];
             $amount = $_GET['amount'];
+            // dd($gateway, $amount);
         }
 
         if($gateway == "Bitcoin")
         {
+            $data = file_get_contents("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd") ?? null;
+            $data2 = json_decode($data);
+            $btc = $data2->bitcoin->usd;
+            $amount =$amount / $btc;
+            // dd($amount);
             try {
-                $data = file_get_contents("https://blockchain.info/tobtc?currency=USD&value=".$amount) ?? null;
-                if($data != null)
+                if($amount != null)
                 {
-                    $amount_payable = $data;
+                    $amount_payable = $amount;
                 }
             } catch (\Throwable $th) {
-                $amount_payable = $data;
+                $amount_payable = $amount;
             }
             
         }
@@ -57,8 +63,14 @@ class TransactionController extends Controller
            $receipt = $request->deposit_receipt;
            $ext = $receipt->getClientOriginalExtension();
            $newfile_name = time()."." . $ext;
-           $attachment = 'deposit_receipt/'.$newfile_name;
-          $receipt->storePubliclyAs("deposit_receipt",$newfile_name,'public');
+           $attachment = $newfile_name;
+           $destinationPath = public_path().'/assets/deposit_receipts/';
+            // $destinationPath = public_path().'/uploads/images/apartments/'.$user->email.'/';
+
+            // asset('deposit_receipts');
+            // dd(asset('deposit_receipts'));
+            $receipt->move($destinationPath, $newfile_name);
+        //   $receipt->storePubliclyAs("deposit_receipt",$newfile_name,'public');
         } catch (\Throwable $th) {
             //throw $th;
             dd($th);
@@ -115,7 +127,7 @@ class TransactionController extends Controller
 
         if($amount > $wallet->balance)
         {
-            return redirect()->back()->with("error","Insufficient Funds");
+            return redirect()->back()->with("error","Insufficient Funds, your balance is ". $wallet->balance);
         }
 
         Transaction::update_transaction($amount,Auth::user()->id,0,"withdraw",$address);

@@ -48,16 +48,6 @@
             <div class="pb-60 pt-60">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-12">
-
-
-
-
-                            
-
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
                         <div class="col-lg-12 mt-lg-0 mt-5">
                             <div class="row mb-none-30">
                                 <div class="col-xl-4 col-sm-6 mb-30">
@@ -123,6 +113,28 @@
                                     </div><!-- d-widget-two end -->
                                 </div>
                                 <div class="col-xl-4 col-sm-6 mb-30">
+                                    {{-- <a href="{{url('user/investment_plan')}}"> --}}
+                                        <div style="display: flex; flex-direction: column" class="d-widget">
+                                        <div class="left-content">
+                                            <span class="caption">Referral code</span>
+                                           
+                                        </div>
+                                        <div style="display: flex; position: relative;">
+                                            <div>   
+                                                <h1 id="copyText" style="font-size: 1.5rem">{{$ref_code}}</h1>
+                                            </div>
+                                            {{-- <div style="margin-left: auto"> --}}
+                                                <p id="copied" style="position: absolute; right:2rem; display: none;">Copied!!!</p>
+                                                <button id="copyBtn" style="font-size: 10px; color: #000; margin-left: auto; background-color: transparent;" onclick="copyToClipboard('{{$ref_code}}')">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M4 7v14h14v2H4c-1.1 0-2-.9-2-2V7zm16-4c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h3.18C11.6 1.84 12.7 1 14 1s2.4.84 2.82 2zm-6 0c-.55 0-1 .45-1 1s.45 1 1 1s1-.45 1-1s-.45-1-1-1m-4 4V5H8v12h12V5h-2v2m-3 8h-5v-2h5m3-2h-8V9h8z"/></svg>
+                                                </button>
+                                            {{-- </div> --}}
+                                        </div>
+                                    </div><!-- d-widget-two end -->
+                                {{-- </a> --}}
+                                    
+                                </div>
+                                <div class="col-xl-4 col-sm-6 mb-30">
                                     <a href="{{url('user/investment_plan')}}"><div class="d-widget d-flex justify-content-between gap-5">
                                         <div class="left-content">
                                             <span class="caption">Invest Now</span>
@@ -134,6 +146,7 @@
                                     </div><!-- d-widget-two end --></a>
                                     
                                 </div>
+                               
                             </div><!-- row end -->
                             <div class="row mt-50">
                                 <div class="col-lg-12">
@@ -198,3 +211,33 @@
        @include('layouts.website.footer')
     </div>
 @endsection
+
+
+@section('extra-js-script')
+<script>
+    
+    async function copyToClipboard(element) {
+        await navigator.clipboard.writeText(element);
+        let copied = document.getElementById('copied');
+        copied.style.display = 'block';
+        setTimeout(() => {
+            copied.style.display = 'none';
+            
+        }, 3000);
+    }
+
+</script>
+
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'fc8c4beefba2468bc219a1e43d4dc19ff909912d';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+@endsection
+

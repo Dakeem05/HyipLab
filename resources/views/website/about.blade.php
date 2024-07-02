@@ -1,4 +1,4 @@
-@extends('layouts.website.website_layout')
+@extends('layouts.website.about_layout')
 @section('main-content')
 
     <body>
@@ -122,7 +122,7 @@
                                         towards increasing your profit margin by profitable investment. We look forward to
                                         you being part of our community.
                                     </p>
-                                    <a href="about.html" class="btn--base mt-4">More Info</a>
+                                    {{-- <a href="about.html" class="btn--base mt-4">More Info</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -273,3 +273,17 @@
 
         </div>
     @endsection
+
+    @section('extra-js-script')
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'fc8c4beefba2468bc219a1e43d4dc19ff909912d';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+@endsection
