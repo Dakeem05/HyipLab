@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl p-0 align-items-center">
-    <a class="site-logo site-title" href="{{url(env("APP_URL_HOME"))}}">
+    <a class="site-logo site-title" href="{{env("APP_URL_HOME")}}">
         <img
         style="width: 5rem; height: 5rem"
 src={{asset("assets/images/logoIcon/logo_cropped.png")}}

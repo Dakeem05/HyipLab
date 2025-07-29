@@ -9,7 +9,7 @@
     <meta name="title" Content="{{ env('APP_NAME') }} - Home">
 
     <meta name="description"
-        content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit">
+        content="WinPath is a secure investment platform offering high-yield plans with daily returns. Invest in cryptocurrency, Start earning today!">
     <meta name="keywords" content="admin,blog,aaaa,ddd,aaa">
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/logoIcon/favicon.png') }}" type="image/x-icon">
 
@@ -21,14 +21,14 @@
 
     <meta itemprop="name" content="Winpath - Home">
     <meta itemprop="description"
-        content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit">
-    <meta itemprop="image" content="{{ URL::asset('assets/images/seo/633eef9a9b3161665068954.jpg') }}">
+        content="WinPath is a secure investment platform offering high-yield plans with daily returns. Invest in cryptocurrency, Start earning today!">
+    <meta itemprop="image" content="{{ URL::asset('assets/images/seo/winpath_seo_image.png') }}">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="Winpath">
     <meta property="og:description"
-        content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ff">
-    <meta property="og:image" content="{{ URL::asset('assets/images/seo/633eef9a9b3161665068954.jpg') }}" />
+        content="WinPath is a secure investment platform offering high-yield plans with daily returns. Invest in cryptocurrency, Start earning today!">
+    <meta property="og:image" content="{{ URL::asset('assets/images/seo/winpath_seo_image.png') }}" />
     <meta property="og:image:type" content="jpg" />
     <meta property="og:image:width" content="1180" />
     <meta property="og:image:height" content="600" />
