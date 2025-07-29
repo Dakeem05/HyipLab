@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -66,39 +67,42 @@ class AdminController extends Controller
 
     public function transaction_action(Request $request)
     {
-        $transaction_model = new Transaction();
-        $t_id = $request->input('id');
-        $action = $request->input('action');
-        $amount = $request->input('amount');
-        $user_id = $request->input('user_id');
-        $type = $request->input('type');
+        try {     
+            DB::beginTransaction();
+            $transaction_model = new Transaction();
+            $t_id = $request->input('id');
+            $action = $request->input('action');
+            $amount = $request->input('amount');
+            $user_id = $request->input('user_id');
+            $type = $request->input('type');
 
 
-        if($action == "reject")
-        {
-            $transaction_model->where('id',$t_id)->update([
-                "status"=>2
-            ]);
-             
-        }else{
-            $transaction_model->where('id',$t_id)->update([
-                "status"=>1
-            ]);
-        
-            if($type == "deposit")
+            if($action == "reject")
             {
-                Wallet::credit_account($amount,$user_id);
+                $transaction_model->where('id',$t_id)->update([
+                    "status"=>2
+                ]);
+                
+            }else{
+                $transaction_model->where('id',$t_id)->update([
+                    "status"=>1
+                ]);
+            
+                if($type == "deposit")
+                {
+                    Wallet::credit_account($amount,$user_id);
 
-            }elseif ($type == "withdraw") {
-                Wallet::debit_account($amount,$user_id);
+                }elseif ($type == "withdraw") {
+                    Wallet::debit_account($amount,$user_id);
+
+                }
 
             }
-
+            DB::commit();
+            return redirect()->back()->with('success',"Transaction request complete");
+        } catch (\Throwable $th) {
+            DB::rollBack();
         }
-
-        return redirect()->back()->with('success',"Transaction request complete");
-
-        
     }
 
 

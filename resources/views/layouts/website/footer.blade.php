@@ -18,8 +18,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-md-left text-center">
-                    <p class="copy-right-text">&copy; 2022 <a href=""
-                            class="text--base">ADD UP COIN</a>. All Rights Reserved</p>
+                    <p class="copy-right-text">&copy;  <span id="year"></span> <a href=""
+                            class="text--base">{{ env('APP_NAME') }}</a>. All Rights Reserved</p>
                 </div>
                 <div class="col-md-6">
                     <ul
@@ -39,3 +39,9 @@
         </div>
     </div>
 </footer>
+
+<script>
+    var date = new Date();
+    var year = date.getFullYear();
+    document.getElementById("year").innerHTML = year;
+</script>

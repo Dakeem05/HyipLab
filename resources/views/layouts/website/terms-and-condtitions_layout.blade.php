@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Addupcoin - Terms and Condtitions</title>
+    <title> Winpath - Terms and Condtitions</title>
     <meta name="title" Content="{{ env('APP_NAME') }} - Terms and Condtitions">
 
     <meta name="description"
@@ -17,15 +17,15 @@
     <link rel="apple-touch-icon" href="{{ URL::asset('assets/images/logoIcon/logo.png') }}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Addupcoin - Terms and Condtitions">
+    <meta name="apple-mobile-web-app-title" content="Winpath - Terms and Condtitions">
 
-    <meta itemprop="name" content="Addupcoin - Terms and Condtitions">
+    <meta itemprop="name" content="Winpath - Terms and Condtitions">
     <meta itemprop="description"
         content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit">
     <meta itemprop="image" content="{{ URL::asset('assets/images/seo/633eef9a9b3161665068954.jpg') }}">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Addupcoin">
+    <meta property="og:title" content="Winpath">
     <meta property="og:description"
         content="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ff">
     <meta property="og:image" content="{{ URL::asset('assets/images/seo/633eef9a9b3161665068954.jpg') }}" />

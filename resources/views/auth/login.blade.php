@@ -1,57 +1,156 @@
-@extends('layouts.app')
+@extends('layouts.website.website_layout')
 
-@section('content')
-<div class="container-fluid py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <div class="card bg-dark border-0 shadow-lg">
-                <div class="card-body p-5">
-                    <h2 class="card-title text-center text-white mb-4">{{ __('Login') }}</h2>
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+@section('main-content')
+<div class="full-wh">
+    <!-- STAR ANIMATION -->
+    <div class="bg-animation">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+        <div id='stars4'></div>
+    </div><!-- / STAR ANIMATION -->
+</div>
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label text-white">{{ __('Email Address') }}</label>
-                            <input id="email" type="email" class="form-control rounded-pill bg-dark text-white border-light @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label text-white">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control rounded-pill bg-dark text-white border-light @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3 form-check text-center">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label text-white" for="remember">
-                                {{ __('Remember Me') }}
-                            </label>
-                        </div>
-
-                        <div class="d-grid mb-0">
-                            <button type="submit" class="btn btn-primary rounded-pill">{{ __('Login') }}</button>
-                        </div>
-
-                        @if (Route::has('password.request'))
-                            <div class="mt-3 text-center">
-                                <a class="btn btn-link text-white" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+<div class="page-wrapper">
+    <!-- header-section start  -->
+    <header class="header">
+        <div class="header__bottom">
+            <div class="container">
+                @include('layouts.website.navigation')
+            </div>
+        </div><!-- header__bottom end -->
+    </header>
+    <!-- header-section end  -->
+    
+    <div class="section-wrapper">
+        <section class="pt-120 pb-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="card bg-dark border-0 shadow-lg rounded-lg">
+                            <div class="card-body p-5">
+                                <h2 class="section-title text-center mb-4">
+                                    <span class="font-weight-normal text-white">Welcome Back To</span> 
+                                    <b class="base--color">{{ config('app.name') }}</b>
+                                </h2>
+                                
+                                <form method="POST" action="{{ route('login') }}" class="mt-4">
+                                    @csrf
+                                    
+                                    <div class="form-group">
+                                        <label for="email" class="form-label text-white">{{ __('Email Address') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-dark border-light">
+                                                <i class="las la-envelope text-white"></i>
+                                            </span>
+                                            <input id="email" type="email" class="form-control bg-dark text-white border-light @error('email') is-invalid @enderror" 
+                                                name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        </div>
+                                        @error('email')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    
+                                    <div class="form-group mt-4">
+                                        <label for="password" class="form-label text-white">{{ __('Password') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-dark border-light">
+                                                <i class="las la-lock text-white"></i>
+                                            </span>
+                                            <input id="password" type="password" class="form-control bg-dark text-white border-light @error('password') is-invalid @enderror" 
+                                                name="password" required autocomplete="current-password">
+                                        </div>
+                                        @error('password')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    
+                                    <div class="form-group mt-4 d-flex justify-content-between align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            <label class="form-check-label text-white" for="remember">
+                                                {{ __('Remember Me') }}
+                                            </label>
+                                        </div>
+                                        
+                                        @if (Route::has('password.request'))
+                                            <a href="{{ route('password.request') }}" class="text-white hover-base--color">
+                                                {{ __('Forgot Password?') }}
+                                            </a>
+                                        @endif
+                                    </div>
+                                    
+                                    <div class="form-group mt-5">
+                                        <button type="submit" class="btn btn--base btn-block btn-lg">
+                                            {{ __('Login') }}
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="mt-4 text-center">
+                                        <p class="text-white">
+                                            {{ __("Don't have an account?") }}
+                                            <a href="{{ route('register') }}" class="base--color font-weight-bold">{{ __('Register Here') }}</a>
+                                        </p>
+                                    </div>
+                                </form>
                             </div>
-                        @endif
-                    </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
+    
+    @include('layouts.website.footer')
 </div>
+@endsection
+
+@section('extra-css')
+<style>
+    .form-control {
+        background-color: #1a1a2e !important;
+        border-color: #2d2d42 !important;
+        color: #ffffff !important;
+        height: 45px;
+    }
+    
+    .form-control:focus {
+        box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+        border-color: #3b82f6;
+    }
+    
+    .input-group-text {
+        background-color: #1a1a2e !important;
+        border-color: #2d2d42 !important;
+        color: #6c757d !important;
+    }
+    
+    .card {
+        background-color: rgba(26, 26, 46, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid #2d2d42;
+    }
+    
+    .invalid-feedback {
+        color: #ff6b6b;
+    }
+    
+    .form-check-input {
+        background-color: #1a1a2e;
+        border-color: #2d2d42;
+    }
+    
+    .form-check-input:checked {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+    }
+    
+    .hover-base--color:hover {
+        color: var(--base--color) !important;
+    }
+</style>
 @endsection

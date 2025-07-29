@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -38,8 +39,8 @@ class InvestmmentController extends Controller
         if($plan['maximum'] != 'unlimited' && $amount > $plan['maximum'])
         // dd($plan['maximum']);
     {
-        dd($plan['maximum']);
-            dd($amount);
+        // dd($plan['maximum']);
+        //     dd($amount);
             return redirect()-> back()->with('error',"Choose a different investment plan if you want to invest higher amounts.");
         }
         if($amount > $balance->balance)
@@ -57,38 +58,47 @@ class InvestmmentController extends Controller
 
     public function start_investment(Request $request)
     {
-        $investment_instance = Investment::where('user_id',Auth::user()->id)->first();
-     
-        $investment_model = new Investment();
-        $investment_data = session()->get("investment_data");
-        $maturity_date = time() + 86400 * $investment_data['plan']['duration'];
-        $maturity_date =date('Y/m/d ', $maturity_date);
-        $investment_model->plan = $investment_data['plan_id'];
-        $investment_model->maturity_date = $maturity_date;
-    
-        $investment_model->amount = $investment_data['amount'];
-        $investment_model->status = 0;
-        $investment_model->next_top_up = time() + env("TOP_UP_TIMER");
-        $investment_model->user_id = Auth::user()->id;
-        $investment_model->save();
-
+        try {
+            DB::beginTransaction();
+            $investment_instance = Investment::where('user_id',Auth::user()->id)->first();
         
-        Wallet::debit_account($investment_data['amount'],Auth::user()->id);
-        if($investment_instance == ''){
-            $percentage = Config::get("referral_bonus.percentage_first");
-            $user = User::where('id',Auth::user()->id)->first();
-            $referrer = User::where('ref_code', $user->referrer_code)->first();
-            $bonus = $investment_data['amount'] * ($percentage / 100);
-            Wallet::credit_account($bonus,$referrer->id);
-        } else{
-            $percentage = Config::get("referral_bonus.percentage_others");
-            $user = User::where('id',Auth::user()->id)->first();
-            $referrer = User::where('ref_code', $user->referrer_code)->first();
-            $bonus = $investment_data['amount'] * ($percentage / 100);
-            Wallet::credit_account($bonus,$referrer->id);
-        }
-        return redirect("user/investment/history");
+            $investment_model = new Investment();
+            $investment_data = session()->get("investment_data");
+            $maturity_date = time() + 86400 * $investment_data['plan']['duration'];
+            $maturity_date =date('Y/m/d ', $maturity_date);
+            $investment_model->plan = $investment_data['plan_id'];
+            $investment_model->maturity_date = $maturity_date;
+        
+            $investment_model->amount = $investment_data['amount'];
+            $investment_model->status = 0;
+            $investment_model->next_top_up = time() + env("TOP_UP_TIMER");
+            $investment_model->user_id = Auth::user()->id;
+            $investment_model->save();
 
+            
+            Wallet::debit_account($investment_data['amount'],Auth::user()->id);
+            if($investment_instance == ''){
+                $percentage = Config::get("referral_bonus.percentage_first");
+                $user = User::where('id',Auth::user()->id)->first();
+                $referrer = User::where('ref_code', $user->referrer_code)->first();
+                if (!is_null($referrer)) {
+                    $bonus = $investment_data['amount'] * ($percentage / 100);
+                    Wallet::credit_account($bonus,$referrer->id);
+                }
+            } else{
+                $percentage = Config::get("referral_bonus.percentage_others");
+                $user = User::where('id',Auth::user()->id)->first();
+                $referrer = User::where('ref_code', $user->referrer_code)->first();
+                if (!is_null($referrer)) {
+                    $bonus = $investment_data['amount'] * ($percentage / 100);
+                    Wallet::credit_account($bonus,$referrer->id);
+                }
+            }
+            DB::commit();
+            return redirect("user/investment/history");
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
     }
 
 

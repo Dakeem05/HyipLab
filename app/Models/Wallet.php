@@ -21,6 +21,9 @@ class Wallet extends Model
         $get_user = $wallet_model->select("balance")->where('user_id',$user_id)->first();
         $balance = $get_user['balance'];
         $new_balance = $balance - $amount;
+        if ($new_balance < 0) {
+            return false;
+        }
         $wallet_model->where('user_id',$user_id)->update([
             "balance"=>$new_balance
         ]);

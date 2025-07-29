@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-xl p-0 align-items-center">
     <a class="site-logo site-title" href="{{url('admin/dashboard')}}"><img
-        style="width: 4rem;"
+        style="width: 5rem; height: 5rem"
 src={{asset("assets/images/logoIcon/logo_cropped.png")}}
 alt="site-logo"></a>
     <ul class="account-menu responsive-account-menu ms-3">

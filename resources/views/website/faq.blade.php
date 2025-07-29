@@ -87,8 +87,8 @@
                                     <div id="collapse0" class="collapse" aria-labelledby="heading0"
                                         data-bs-parent="#accordionExample">
                                         <div class="card-body">
-                                            Addupcoin is a registered digital asset investment firm based in the UK. The platform,
-                                             which includes advanced basic and technical analysis at the source of high return performance, offers high & fixed interest return. Aiming for success with its international investor network, experienced team, privileged information from business and technology world; Addupcoin.com stands out from its competitors with its proven quality and ease of use. The company, which is managed under the leadership of people who think and foresee the future, 
+                                            Winpath is a registered digital asset investment firm based in the UK. The platform,
+                                             which includes advanced basic and technical analysis at the source of high return performance, offers high & fixed interest return. Aiming for success with its international investor network, experienced team, privileged information from business and technology world; Thewinpath.com stands out from its competitors with its proven quality and ease of use. The company, which is managed under the leadership of people who think and foresee the future, 
                                             is committed to achieving high returns from well-diversified portfolios and prioritizing clients
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                                 data-bs-toggle="collapse" data-bs-target="#collapse2"
                                                 aria-expanded="false" aria-controls="collapse2">
                                                 <i class="las la-question-circle"></i>
-                                                <span>Addupcoin: What is it and how is it important?</span>
+                                                <span>Winpath: What is it and how is it important?</span>
                                             </button>
                                         </h2>
                                     </div>
@@ -127,8 +127,8 @@
                                         data-bs-parent="#accordionExample">
                                         <div class="card-body">With its proven high qualities and easy-to-use interface  the company is managed under the leadership of experts who thinks and foresee the future. Our Experts are committed to achieving the returns from well-diversified portfolios and prioritizing users. 
 
-                                            Addupcoin is a registered digital asset investment firm based in the United Kingdom.
-                                         The platform, which includes advanced basic and technical analysis at the source of high return performance, offers high and fixed interest return. Calculatingly, Addupcoin aims for success with its international investor network, experienced team, privileged information from business around the world.</div>
+                                            Winpath is a registered digital asset investment firm based in the United Kingdom.
+                                         The platform, which includes advanced basic and technical analysis at the source of high return performance, offers high and fixed interest return. Calculatingly, Winpath aims for success with its international investor network, experienced team, privileged information from business around the world.</div>
                                     </div>
                                 </div>                                   
                                 <div class="card">
@@ -138,14 +138,14 @@
                                                 data-bs-toggle="collapse" data-bs-target="#collapse3"
                                                 aria-expanded="false" aria-controls="collapse3">
                                                 <i class="las la-question-circle"></i>
-                                                <span>Who developed Addupcoin?</span>
+                                                <span>Who developed Winpath?</span>
                                             </button>
                                         </h2>
                                     </div>
 
                                     <div id="collapse3" class="collapse" aria-labelledby="heading3"
                                         data-bs-parent="#accordionExample">
-                                        <div class="card-body">Addupcoin was designed by a team of experts in 2018. Addupcoin is so far the only successful digital asset investment firm designed with trust over authorities and its users.</div>
+                                        <div class="card-body">Winpath was designed by a team of experts in 2018. Winpath is so far the only successful digital asset investment firm designed with trust over authorities and its users.</div>
                                     </div>
                                 </div>                                   
                                 <div class="card">
@@ -155,14 +155,14 @@
                                                 data-bs-toggle="collapse" data-bs-target="#collapse4"
                                                 aria-expanded="false" aria-controls="collapse4">
                                                 <i class="las la-question-circle"></i>
-                                                <span>Where is Addupcoin Based?</span>
+                                                <span>Where is Winpath Based?</span>
                                             </button>
                                         </h2>
                                     </div>
 
                                     <div id="collapse4" class="collapse" aria-labelledby="heading4"
                                         data-bs-parent="#accordionExample">
-                                        <div class="card-body">Addupcoin is registered and stationed in Borehamwood, United Kingdom.</div>
+                                        <div class="card-body">Winpath is registered and stationed in Borehamwood, United Kingdom.</div>
                                     </div>
                                 </div>                                   
                                 <div class="card">
@@ -172,14 +172,14 @@
                                                 data-bs-toggle="collapse" data-bs-target="#collapse5"
                                                 aria-expanded="false" aria-controls="collapse5">
                                                 <i class="las la-question-circle"></i>
-                                                <span>What can Addupcoin do?</span>
+                                                <span>What can Winpath do?</span>
                                             </button>
                                         </h2>
                                     </div>
 
                                     <div id="collapse5" class="collapse" aria-labelledby="heading5"
                                         data-bs-parent="#accordionExample">
-                                        <div class="card-body">Addupcoin has the power to change the financial landscape of every user’s income source. Signing up to addupcoin as a passive income is just the beginning of financial freedom.</div>
+                                        <div class="card-body">Winpath has the power to change the financial landscape of every user’s income source. Signing up to Winpath as a passive income is just the beginning of financial freedom.</div>
                                     </div>
                                 </div>                                   
                                 <div class="card">
@@ -196,7 +196,7 @@
 
                                     <div id="collapse6" class="collapse" aria-labelledby="heading6"
                                         data-bs-parent="#accordionExample">
-                                        <div class="card-body">Addupcoin.com works with leading companies around the globe to ensure security of user’s funds. We store funds in advanced cold wallets developed by ledger.</div>
+                                        <div class="card-body">Thewinpath.com works with leading companies around the globe to ensure security of user’s funds. We store funds in advanced cold wallets developed by ledger.</div>
                                     </div>
                                 </div>                                   
                                 <div class="card">
@@ -213,7 +213,7 @@
 
                                     <div id="collapse7" class="collapse" aria-labelledby="heading7"
                                         data-bs-parent="#accordionExample">
-                                        <div class="card-body">Addupcoin offers the lowest deposit amount of hundred ($100) dollars investment plan. No limit for maximum deposit except for some plan boundaries. </div>
+                                        <div class="card-body">Winpath offers the lowest deposit amount of hundred ($100) dollars investment plan. No limit for maximum deposit except for some plan boundaries. </div>
                                     </div>
                                 </div>                                   
                                 <div class="card">
@@ -282,7 +282,7 @@
                                                 data-bs-toggle="collapse" data-bs-target="#collapse11"
                                                 aria-expanded="false" aria-controls="collapse11">
                                                 <i class="las la-question-circle"></i>
-                                                <span>How Does Addupcoin Referral Program Works?</span>
+                                                <span>How Does Winpath Referral Program Works?</span>
                                             </button>
                                         </h2>
                                     </div>

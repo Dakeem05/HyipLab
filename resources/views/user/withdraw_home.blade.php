@@ -61,7 +61,7 @@
     
                             @endif
                             <div class="text-end">
-                                <a href="{{ url('user/withdraw/history') }}" class="btn btn--base">Withdraw History</a>
+                                <a href="{{ url('user/transaction/history') }}" class="btn btn--base">Withdraw History</a>
                             </div>
                         </div>
                        
